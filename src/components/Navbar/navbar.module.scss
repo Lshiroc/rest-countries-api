@@ -1,0 +1,44 @@
+// Variables
+$darkBlue: hsl(209, 23%, 22%);
+$veryDarkBlue1: hsl(207, 26%, 17%);
+$veryDarkBlue2: hsl(200, 15%, 8%);
+$darkGray: hsl(0, 0%, 52%);
+$lightGray: hsl(0, 0%, 98%);
+$white: hsl(0, 0%, 100%);
+
+.navbar {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $white;
+    box-shadow: 0px 0px 25px -10px $darkGray;
+    margin-bottom: 48px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.darkMode {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    column-gap: 10px;
+
+    .icon {
+        width: 20px;
+        -webkit-user-select: none;
+        user-select: none;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .title {
+        font-size: 17px;
+        font-weight: 600;
+    }
+}

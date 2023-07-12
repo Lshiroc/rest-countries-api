@@ -1,0 +1,35 @@
+.navbar {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0px 0px 25px -10px hsl(0, 0%, 52%);
+  margin-bottom: 48px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.darkMode {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.darkMode .icon {
+  width: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+       user-select: none;
+}
+.darkMode .icon img {
+  width: 100%;
+}
+.darkMode .title {
+  font-size: 17px;
+  font-weight: 600;
+}/*# sourceMappingURL=navbar.module.css.map */
