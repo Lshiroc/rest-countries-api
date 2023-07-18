@@ -6,6 +6,71 @@ $darkGray: hsl(0, 0%, 52%);
 $lightGray: hsl(0, 0%, 98%);
 $white: hsl(0, 0%, 100%);
 
+.main {
+    background-color: $lightGray;
+    padding-top: 48px;
+    padding-bottom: 60px;
+
+    &.dark {
+        background-color: $veryDarkBlue1;
+
+        .sortElements {
+            .search {
+                background: $darkBlue;
+                box-shadow: 0 0 30px -5px $veryDarkBlue2;
+
+                input {
+                    background-color: inherit;
+                    color: $white;
+
+                    &::placeholder {
+                        color: $lightGray;
+                    }
+                }
+            }
+
+            .filter {
+                box-shadow: 0 0 30px -5px $veryDarkBlue2;
+
+                .current {
+                    background-color: $darkBlue;
+                    color: $white;
+                }
+
+                .options {
+                    box-shadow: 0 0 30px -5px $veryDarkBlue2;
+                    background-color: $darkBlue;
+                    color: $white;
+                }
+            }
+        }
+
+        .content .country {
+            background: $darkBlue;
+            box-shadow: 0 0 25px -5px $veryDarkBlue2;
+
+            .info {
+                .name {
+                    color: $white;
+
+                    &:active, &:visited {
+                        color: $white;
+                    }
+                }
+
+                .text {
+                    color: $lightGray;
+
+                    &:active, &:visited {
+                        color: $lightGray;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 .sortElements {
     display: flex;
     align-items: center;
@@ -63,6 +128,7 @@ $white: hsl(0, 0%, 100%);
             font-size: 16px;
             font-weight: 700;
             background: $white;
+            border-radius: 5px;
             display: grid;
             grid-template-columns: auto 24px;
             align-items: center;
@@ -126,6 +192,7 @@ $white: hsl(0, 0%, 100%);
 
 .country {
     background: $white;
+    box-shadow: 0 0 25px -15px $darkBlue;
     animation-name: appear;
     animation-duration: .4s;
     animation-iteration-count: 1;
@@ -152,12 +219,22 @@ $white: hsl(0, 0%, 100%);
             font-weight: 800;
             line-height: 20px;
             margin-bottom: 20px;
+            color: $veryDarkBlue2;
+
+            &:active, &:visited {
+                color: $veryDarkBlue2;
+            }
         }
 
         .text {
             font-size: 17px;
             line-height: 17px;
             margin-bottom: 10px;
+            color: $veryDarkBlue1;
+
+            &:active, &:visited {
+                color: $veryDarkBlue1;
+            }
 
             span {
                 font-weight: 700;

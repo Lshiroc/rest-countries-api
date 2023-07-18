@@ -1,0 +1,221 @@
+.main {
+  padding-bottom: 60px;
+  padding-top: 48px;
+}
+.main.dark {
+  background-color: hsl(207, 26%, 17%);
+}
+.main.dark .backBtn {
+  background: hsl(209, 23%, 22%);
+  box-shadow: 0 0 6px hsl(200, 15%, 8%);
+}
+.main.dark .backBtn .text {
+  color: hsl(0, 0%, 98%);
+}
+.main.dark .content .info .name {
+  color: hsl(0, 0%, 100%);
+}
+.main.dark .content .info .infoText {
+  color: hsl(0, 0%, 100%);
+}
+.main.dark .content .info .borderCountries .text {
+  color: hsl(0, 0%, 100%);
+}
+.main.dark .content .info .borderCountries .country {
+  color: hsl(0, 0%, 98%);
+}
+
+.backBtn {
+  padding: 10px 34px;
+  display: inline-grid;
+  grid-template-columns: 30px auto;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  align-items: center;
+  border-radius: 5px;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0px 0px 10px hsl(0, 0%, 52%);
+  cursor: pointer;
+  margin-bottom: 70px;
+}
+.backBtn .icon {
+  width: 30px;
+}
+.backBtn .icon img {
+  width: 100%;
+}
+.backBtn .text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.loaded .container .content {
+  opacity: 1;
+  visibility: visible;
+}
+.loaded .loadingTemplate {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.container {
+  position: relative;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 560px calc(100% - 560px);
+  align-items: center;
+  justify-content: space-between;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+}
+.content .flag img {
+  width: 100%;
+}
+.content .info .name {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 35px;
+}
+.content .info .infoText {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  color: hsl(200, 15%, 8%);
+}
+.content .info .infoText .column {
+  display: grid;
+  grid-template-rows: repeat(3, 18px);
+  row-gap: 20px;
+}
+.content .info .infoText .text {
+  line-height: 18px;
+}
+.content .info .infoText .text span {
+  font-weight: 700;
+}
+.content .info .borderCountries {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 15px;
+  line-height: 18px;
+}
+.content .info .borderCountries .text {
+  font-weight: 700;
+  margin-right: 4px;
+  color: hsl(207, 26%, 17%);
+}
+.content .info .borderCountries .country {
+  padding: 10px 28px;
+  font-size: 16px;
+  line-height: 18px;
+  box-shadow: 0 0 5px hsl(0, 0%, 52%);
+  border-radius: 5px;
+  margin-left: 12px;
+  color: hsl(207, 26%, 17%);
+}
+.content .info .borderCountries .country:active, .content .info .borderCountries .country:visited {
+  color: hsl(207, 26%, 17%);
+}
+
+.loadingTemplate {
+  display: grid;
+  grid-template-columns: 560px calc(100% - 560px);
+  justify-content: space-between;
+  align-items: center;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.3s;
+  position: absolute;
+  top: 0;
+}
+.loadingTemplate .flag {
+  width: 100%;
+  height: 350px;
+  background: #d1d5db;
+  position: relative;
+  overflow: hidden;
+}
+.loadingTemplate .info .loadBox {
+  filter: blur(15px);
+}
+.loadingTemplate .info .title {
+  width: 250px;
+  height: 30px;
+  background-color: #d1d5db;
+  margin-bottom: 35px;
+  position: relative;
+  overflow: hidden;
+}
+.loadingTemplate .info .infoBox {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  justify-content: space-between;
+  row-gap: 20px;
+  margin-bottom: 60px;
+}
+.loadingTemplate .info .infoBox .infoLine {
+  width: 200px;
+  height: 20px;
+  background-color: #d1d5db;
+  position: relative;
+  overflow: hidden;
+}
+.loadingTemplate .info .borders {
+  width: 350px;
+  height: 20px;
+  background-color: #d1d5db;
+  position: relative;
+  overflow: hidden;
+}
+
+.loadBox {
+  animation-name: loading;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  background: white;
+  filter: blur(40px);
+  width: 10%;
+  height: 100%;
+  position: absolute;
+  transform: skew(-10deg);
+}
+
+@keyframes loading {
+  0% {
+    left: -20%;
+    right: auto;
+  }
+  100% {
+    left: 115%;
+    right: auto;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .content {
+    grid-template-columns: 450px 53%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .content {
+    grid-template-columns: 100%;
+  }
+  .content .flag {
+    margin-bottom: 30px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .content .info .infoText {
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    row-gap: 40px;
+  }
+}/*# sourceMappingURL=detail.module.css.map */

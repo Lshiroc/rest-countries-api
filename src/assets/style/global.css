@@ -10,7 +10,7 @@
 body {
   font-family: "Nunito Sans", sans-serif;
   font-size: 100%;
-  background-color: hsl(0, 0%, 98%);
+  height: 100vh;
 }
 
 img {

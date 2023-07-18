@@ -1,3 +1,54 @@
+.main {
+  background-color: hsl(0, 0%, 98%);
+  padding-top: 48px;
+  padding-bottom: 60px;
+}
+.main.dark {
+  background-color: hsl(207, 26%, 17%);
+}
+.main.dark .sortElements .search {
+  background: hsl(209, 23%, 22%);
+  box-shadow: 0 0 30px -5px hsl(200, 15%, 8%);
+}
+.main.dark .sortElements .search input {
+  background-color: inherit;
+  color: hsl(0, 0%, 100%);
+}
+.main.dark .sortElements .search input::-moz-placeholder {
+  color: hsl(0, 0%, 98%);
+}
+.main.dark .sortElements .search input::placeholder {
+  color: hsl(0, 0%, 98%);
+}
+.main.dark .sortElements .filter {
+  box-shadow: 0 0 30px -5px hsl(200, 15%, 8%);
+}
+.main.dark .sortElements .filter .current {
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
+}
+.main.dark .sortElements .filter .options {
+  box-shadow: 0 0 30px -5px hsl(200, 15%, 8%);
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
+}
+.main.dark .content .country {
+  background: hsl(209, 23%, 22%);
+  box-shadow: 0 0 25px -5px hsl(200, 15%, 8%);
+}
+.main.dark .content .country .info .name {
+  color: hsl(0, 0%, 100%);
+}
+.main.dark .content .country .info .name:active, .main.dark .content .country .info .name:visited {
+  color: hsl(0, 0%, 100%);
+}
+.main.dark .content .country .info .text {
+  color: hsl(0, 0%, 98%);
+}
+.main.dark .content .country .info .text:active, .main.dark .content .country .info .text:visited {
+  color: hsl(0, 0%, 98%);
+}
+
 .sortElements {
   display: flex;
   align-items: center;
@@ -46,6 +97,7 @@
   font-size: 16px;
   font-weight: 700;
   background: hsl(0, 0%, 100%);
+  border-radius: 5px;
   display: grid;
   grid-template-columns: auto 24px;
   align-items: center;
@@ -100,6 +152,7 @@
 
 .country {
   background: hsl(0, 0%, 100%);
+  box-shadow: 0 0 25px -15px hsl(209, 23%, 22%);
   animation-name: appear;
   animation-duration: 0.4s;
   animation-iteration-count: 1;
@@ -109,6 +162,9 @@
 .country .flag {
   width: 100%;
   height: 160px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+       user-select: none;
 }
 .country .flag img {
   width: 100%;
@@ -122,11 +178,19 @@
   font-weight: 800;
   line-height: 20px;
   margin-bottom: 20px;
+  color: hsl(200, 15%, 8%);
+}
+.country .info .name:active, .country .info .name:visited {
+  color: hsl(200, 15%, 8%);
 }
 .country .info .text {
   font-size: 17px;
   line-height: 17px;
   margin-bottom: 10px;
+  color: hsl(207, 26%, 17%);
+}
+.country .info .text:active, .country .info .text:visited {
+  color: hsl(207, 26%, 17%);
 }
 .country .info .text span {
   font-weight: 700;

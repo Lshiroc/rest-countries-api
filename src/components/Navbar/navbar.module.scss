@@ -13,12 +13,26 @@ $white: hsl(0, 0%, 100%);
     justify-content: space-between;
     background-color: $white;
     box-shadow: 0px 0px 25px -10px $darkGray;
-    margin-bottom: 48px;
+
+    &.dark {
+        background-color: $darkBlue;
+
+        .logo {
+            color: $lightGray;
+        }
+
+        .darkMode {
+            .title {
+                color: $lightGray;
+            }
+        }
+    }
 }
 
 .logo {
     font-size: 24px;
     font-weight: 800;
+    color: $darkBlue;
 }
 
 .darkMode {

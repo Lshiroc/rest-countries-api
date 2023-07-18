@@ -1,20 +1,30 @@
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeTheme } from './../../Store/statesReducer';
+
 import style from './home.module.scss';
 import searchIcon from './../../assets/icons/search.svg';
+import searchLightIcon from './../../assets/icons/search-light.svg';
 import arrowDownIcon from './../../assets/icons/arrow-down.svg';
+import arrowDownLightIcon from './../../assets/icons/arrow-down-light.svg';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [data, setData] = useState([]);
     const [showData, setShowData] = useState([]);
+    const [currentTheme, setCurrentTheme] = useState(null);
+    const theme = localStorage.getItem("theme") || "light";
+    const themed = useSelector(state => state.statesReducer.theme);
     let cancelToken;
 
     const fetchData = async () => {
         const resp = await fetch('https://restcountries.com/v3.1/all');
-        const data = await resp.json();
-        setData(data);
-        setShowData(data);
+        let data = await resp.json();
+        let sortedData =  data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+        setData(sortedData);
+        setShowData(sortedData);
     }
 
     const fetchRegion = async (region) => {
@@ -22,7 +32,8 @@ export default function Home() {
             setShowData(data);
         } else {
             const resp = await fetch(`https://restcountries.com/v3.1/region/${region}`)
-            const data = await resp.json();
+            let data = await resp.json();
+            let sortedData =  data.sort((a, b) => a.name.common.localeCompare(b.name.common));
             setShowData(data);
         }
     }
@@ -50,17 +61,30 @@ export default function Home() {
         }
 
     }
-
+    
     useEffect(() => {
+        let thm = localStorage.getItem("theme") || "light";
+        if(thm == "dark") {
+            setCurrentTheme("dark");
+        } else {
+            setCurrentTheme("light");
+        }
+
         fetchData();
     }, [])
 
     return (
-        <main className={`sectionx ${style.main}`}>
+        <main className={`sectionx ${style.main} ${themed && themed == "dark" ? style.dark : theme == "dark" && style.dark}`}>
             <div className={style.sortElements}>
                 <div className={style.search}>
                     <div className={style.icon}>
-                        <img src={searchIcon} alt="Search" />
+                        {
+                            themed == "dark" ? (
+                                <img src={searchLightIcon} alt="Search" />
+                            ) : (
+                                <img src={searchIcon} alt="Search" />
+                            )
+                        }
                     </div>
                     <input type="text" name="search" onChange={(e) => searchCountry(e.target.value)} placeholder='Search for a country...' autoComplete='false' />
                 </div>
@@ -68,7 +92,13 @@ export default function Home() {
                     <div className={style.current}>
                         <div className={style.text}>Filter by Region</div>
                         <div className={style.icon}>
-                            <img src={arrowDownIcon} draggable="false" alt="Open" />
+                            {
+                                themed == "dark" ? (
+                                    <img src={arrowDownLightIcon} draggable="false" alt="Open" />
+                                ) : (
+                                    <img src={arrowDownIcon} draggable="false" alt="Open" />
+                                )
+                            }
                         </div>
                     </div>
                     <div className={style.options} onClick={(e) => e.stopPropagation()}>
@@ -84,17 +114,17 @@ export default function Home() {
             <div className={style.content}>
                 {
                     showData.map((country, index) => (
-                        <div key={index} className={style.country}>
+                        <Link to={`/${country.name.common}`} key={index} className={style.country}>
                             <div className={style.flag}>
                                 <img src={`${country.flags["png"]}`} draggable="false" alt={`The flag of ${country.name.common}`} />
                             </div>
                             <div className={style.info}>
                                 <div className={style.name}>{country.name.common}</div>
-                                <div className={style.text}><span>Population: </span>{country.population}</div>
+                                <div className={style.text}><span>Population: </span>{country?.population && (new Intl.NumberFormat().format(country?.population)).replaceAll(',', '.')}</div>
                                 <div className={style.text}><span>Region: </span>{country.region}</div>
                                 <div className={style.text}><span>Capital: </span>{country.capital}</div>
                             </div>
-                        </div>
+                        </Link>
                     ))
                 }
             </div>
