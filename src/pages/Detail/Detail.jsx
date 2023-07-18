@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import style from './detail.module.scss';
 import arrowLeft from './../../assets/icons/arrow-left.svg';
 import arrowLeftLight from './../../assets/icons/arrow-left-light.svg';
@@ -18,7 +19,7 @@ export default function Detail() {
     }
 
     const fetchCountry = async (country) => {
-        // setImageLoaded(false);
+        setImageLoaded(false);
         const resp = await fetch(`https://restcountries.com/v3.1/name/${country}?fullText=true`);
         const result = await resp.json();
         setData(result[0]);
@@ -44,6 +45,9 @@ export default function Detail() {
 
     return (
         <main className={`sectionx ${style.main} ${imageLoaded && style.loaded} ${theme == "dark" && style.dark}`}>
+            <Helmet>
+                <title>Countries - {country}</title>
+            </Helmet>
             <div className={style.backBtn} onClick={() => back()}>
                 <div className={style.icon}>
                     {

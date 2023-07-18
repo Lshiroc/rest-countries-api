@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeTheme } from './../../Store/statesReducer';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import style from './home.module.scss';
 import searchIcon from './../../assets/icons/search.svg';
@@ -8,7 +10,6 @@ import searchLightIcon from './../../assets/icons/search-light.svg';
 import arrowDownIcon from './../../assets/icons/arrow-down.svg';
 import arrowDownLightIcon from './../../assets/icons/arrow-down-light.svg';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 export default function Home() {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -75,6 +76,9 @@ export default function Home() {
 
     return (
         <main className={`sectionx ${style.main} ${themed && themed == "dark" ? style.dark : theme == "dark" && style.dark}`}>
+            <Helmet>
+                <title>Countries - REST API</title>
+            </Helmet>
             <div className={style.sortElements}>
                 <div className={style.search}>
                     <div className={style.icon}>
